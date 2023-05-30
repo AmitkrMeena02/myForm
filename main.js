@@ -29,3 +29,9 @@ function onSubmit(e) {
     console.log('Form values stored in localStorage');
   }
 }
+
+let serialized = JSON.stringify(localStorage);
+console.log(serialized);
+
+let deserialized = JSON.parse(localStorage.getItem('name'));
+console.log(deserialized);
