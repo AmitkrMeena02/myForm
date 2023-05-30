@@ -19,19 +19,25 @@ function onSubmit(e) {
   ) {
     alert('Please enter all fields');
   } else {
-    // Store form values in localStorage
-    localStorage.setItem('name', nameInput.value);
-    localStorage.setItem('email', emailInput.value);
-    localStorage.setItem('phone', numberInput.value);
-    localStorage.setItem('date', dateInput.value);
-    localStorage.setItem('time', timeInput.value);
+    // Retrieve existing user details from localStorage
+    let users = JSON.parse(localStorage.getItem('users'));
+
+    // Create a new user object
+    const newUser = {
+      name: nameInput.value,
+      email: emailInput.value,
+      phone: numberInput.value,
+      date: dateInput.value,
+      time: timeInput.value
+    };
+
+    // Add the new user to the users array
+    users.push(newUser);
+
+    // Store the updated users array in localStorage
+    localStorage.setItem('users', JSON.stringify(users));
 
     console.log('Form values stored in localStorage');
   }
 }
 
-let serialized = JSON.stringify(localStorage);
-console.log(serialized);
-
-let deserialized = JSON.parse(localStorage.getItem('name'));
-console.log(deserialized);
